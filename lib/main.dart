@@ -17,7 +17,7 @@ void main() {
       Provider(create: (context) => MenuModel()),
     ],
     child: MaterialApp(
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
         '/': (context) => Loading(),
         '/home': (context) => Home(),
