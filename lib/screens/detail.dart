@@ -3,7 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:drink_beer/objects/beer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:provider/provider.dart';
+
+//This is screen that shows details of chosen beer
+//It contains basic information about beer.
+//Okay, it shows just voltage.
+//But to show the city too it would need just insignificant change.
+//And the rating, yes, that would be minor change too.
+//BUT it shows you a comment that you can edit and actually save!
+//...but you'll loose it when you close the program.
 
 class Detail extends StatefulWidget {
   @override
@@ -13,7 +20,6 @@ class Detail extends StatefulWidget {
 class _DetailState extends State<Detail> {
   @override
   Widget build(BuildContext context) {
-
     Beer beer = ModalRoute.of(context).settings.arguments;
     Opinion op = context.watch<BeerModel>().getOp(beer.name);
 
@@ -29,18 +35,12 @@ class _DetailState extends State<Detail> {
               children: [
                 Expanded(
                   child: Column(
-                    children: [
-                      Text('Mesto'),
-                      Text('az predelam model')
-                    ],
+                    children: [Text('Mesto'), Text('az predelam model')],
                   ),
                 ),
                 Expanded(
                   child: Column(
-                    children: [
-                      Text('Voltage'),
-                      Text('${beer.voltage}%')
-                    ],
+                    children: [Text('Voltage'), Text('${beer.voltage}%')],
                   ),
                 ),
               ],
@@ -59,19 +59,18 @@ class _DetailState extends State<Detail> {
             Row(
               children: [
                 Expanded(
-                  child: Card( 
+                  child: Card(
                     margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                     child: Padding(
-                      padding: const EdgeInsets.all(13.0),
-                      child: RatingBar.builder(
-                        initialRating: op.rating,
-                        itemBuilder: (context, _) => Icon(
-                          Icons.star,
-                          color: Colors.red,
-                        ),
-                        onRatingUpdate: null,
-                      )
-                    ),
+                        padding: const EdgeInsets.all(13.0),
+                        child: RatingBar.builder(
+                          initialRating: op.rating,
+                          itemBuilder: (context, _) => Icon(
+                            Icons.star,
+                            color: Colors.red,
+                          ),
+                          onRatingUpdate: null,
+                        )),
                   ),
                 ),
               ],
@@ -85,33 +84,30 @@ class _DetailState extends State<Detail> {
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () async {
-                    String text = op.comment;
-                    dynamic tmp = await Navigator.pushNamed(context, '/edit', arguments: text);
-                    setState(() {
-                      op.comment = tmp;
-                    });
-                  }
-                )
+                    icon: Icon(Icons.edit),
+                    onPressed: () async {
+                      String text = op.comment;
+                      dynamic tmp = await Navigator.pushNamed(context, '/edit',
+                          arguments: text);
+                      setState(() {
+                        op.comment = tmp;
+                      });
+                    })
               ],
             ),
             SizedBox(
               height: 20,
             ),
             Container(
-              constraints: BoxConstraints(
-                maxHeight: 100
-              ),
+              constraints: BoxConstraints(maxHeight: 100),
               child: SizedBox(
                 height: 700,
                 width: 500,
                 child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(op.comment),
-                  )
-                ),
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(op.comment),
+                )),
               ),
             ),
           ],

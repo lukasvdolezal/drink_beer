@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:drink_beer/objects/beer.dart';
 import 'package:provider/provider.dart';
 
+//This screen shows you list of possible beers to choose
+
 class ChooseBeer extends StatefulWidget {
   @override
   _ChooseBeerState createState() => _ChooseBeerState();
@@ -34,15 +36,16 @@ class _ChooseBeerState extends State<ChooseBeer> {
         body: ListView.builder(
           itemCount: count,
           itemBuilder: (context, index) {
-            Beer tmp = Provider.of<MenuModel>(context, listen: false).getBeerbyId(index);
+            Beer tmp = Provider.of<MenuModel>(context, listen: false)
+                .getBeerbyId(index);
             return Card(
                 child: ListTile(
               onTap: () {
                 var beersTmp = context.read<BeerModel>();
-                if(!beersTmp.contains(tmp)){
+                if (!beersTmp.contains(tmp)) {
                   beersTmp.add(tmp);
                   Navigator.pop(context);
-                }else{
+                } else {
                   showAlertDialog(context);
                 }
               },
@@ -53,14 +56,14 @@ class _ChooseBeerState extends State<ChooseBeer> {
         ));
   }
 
-  showAlertDialog(BuildContext context){
+  showAlertDialog(BuildContext context) {
     AlertDialog alert = AlertDialog(
       title: Text('Oops.'),
       content: Text('To uz si ochutnal synku'),
       actions: [
         FlatButton(
           child: Text('Achjo.'),
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
         )
@@ -69,10 +72,9 @@ class _ChooseBeerState extends State<ChooseBeer> {
 
     showDialog(
       context: context,
-      builder: (BuildContext context){
+      builder: (BuildContext context) {
         return alert;
       },
     );
   }
-
 }

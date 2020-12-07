@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:drink_beer/objects/beer.dart';
 
-class MenuModel{
+//This is model for storing every beer you can taste
+//The beers are added to profile beers from here
 
+class MenuModel {
   List<Beer> menu = [
-    Beer(id: 1, name:'Plzen', voltage: 4.7),
+    Beer(id: 1, name: 'Plzen', voltage: 4.7),
     Beer(id: 2, name: 'Kozel', voltage: 3.6),
     Beer(id: 3, name: 'Branik', voltage: 4.0),
     Beer(id: 4, name: 'Punk IPA', voltage: 5.2),
@@ -16,12 +17,11 @@ class MenuModel{
     Beer(id: 10, name: 'Vinohrady', voltage: 5.6),
   ];
 
-  Beer getBeerbyId(int id){
+  Beer getBeerbyId(int id) {
     return menu[id];
   }
 
-  int getlength(){
+  int getlength() {
     return menu.length;
   }
-
 }

@@ -3,12 +3,14 @@ import 'package:drink_beer/models/beersModel.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
+//This is widget that shows basic profile info above the list of drank beers
+//It contains "Add" button for adding a beer to profile
+//The add button navigates user to screen where he can choose beer that he had recently
+
 class Header extends StatefulWidget {
   /*const Header({
     Key key,
   }) : super(key: key);*/
-
-  
 
   Header();
 
@@ -17,7 +19,6 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
-
   Boozehound boozehound;
 
   @override
@@ -63,8 +64,7 @@ class _HeaderState extends State<Header> {
                   },
                   child: Text('Add beer'),
                   color: Colors.blue,
-                )
-            ),
+                )),
           ],
         ),
       ),

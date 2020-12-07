@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+//This is class for every czech made man
 
-class Boozehound{
+class Boozehound {
   String name;
   int beerCount;
   double avgVoltage;

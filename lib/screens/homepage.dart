@@ -4,13 +4,14 @@ import 'package:drink_beer/models/beersModel.dart';
 import 'package:drink_beer/objects/beer.dart';
 import 'package:provider/provider.dart';
 
+//This scree shows you a homepage with profile info and list of beers you've tasted
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-
   int count;
   Beer tmp;
 
@@ -24,7 +25,9 @@ class _HomeState extends State<Home> {
         title: Text('My profile'),
       ),
       body: SafeArea(
-        child: BeerListView(count: count,),
+        child: BeerListView(
+          count: count,
+        ),
       ),
     );
   }
@@ -41,22 +44,20 @@ class BeerListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.watch<BeerModel>().getBeers();
-    List<Beer> tmplist = Provider.of<BeerModel>(context, listen: false).getList();
+    List<Beer> tmplist =
+        Provider.of<BeerModel>(context, listen: false).getList();
     return ListView.builder(
       itemCount: count + 1,
       itemBuilder: (context, index) {
-        if (index < 1)
-          return Header();
+        if (index < 1) return Header();
         var tmp = tmplist[index - 1];
         return Card(
           child: ListTile(
             leading: Avatar(name: tmp.name),
-            title: Text(
-              '${tmp.name} (${tmp.voltage}%)'
-            ),
+            title: Text('${tmp.name} (${tmp.voltage}%)'),
             trailing: IconButton(
               icon: Icon(Icons.info_outline),
-              onPressed: (){
+              onPressed: () {
                 Navigator.pushNamed(
                   context,
                   '/detail',

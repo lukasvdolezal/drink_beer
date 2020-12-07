@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+//This is screen that allows you to edit the comment
 
 class Edit extends StatefulWidget {
   @override
@@ -7,19 +8,17 @@ class Edit extends StatefulWidget {
 }
 
 class _EditState extends State<Edit> {
-
   String output = '';
   final myController = TextEditingController();
 
   @override
-  void dispose(){
+  void dispose() {
     myController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-
     String old = ModalRoute.of(context).settings.arguments;
     myController.text = old;
 
@@ -29,12 +28,11 @@ class _EditState extends State<Edit> {
         title: Text('Uprav komentar'),
         actions: [
           IconButton(
-            icon: Icon(Icons.save),
-            onPressed:(){
-              output = myController.text;
-              Navigator.pop(context, output);
-            }
-          )
+              icon: Icon(Icons.save),
+              onPressed: () {
+                output = myController.text;
+                Navigator.pop(context, output);
+              })
         ],
       ),
       body: TextField(
