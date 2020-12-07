@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 //This is widget that shows basic profile info above the list of drank beers
 //It contains "Add" button for adding a beer to profile
-//The add button navigates user to screen where he can choose beer that he had recently
+//The add button navigates user to screen where he can choose beer that he recently had
 
 class Header extends StatefulWidget {
   /*const Header({
