@@ -69,7 +69,12 @@ class _DetailState extends State<Detail> {
                             Icons.star,
                             color: Colors.red,
                           ),
-                          onRatingUpdate: null,
+                          onRatingUpdate: (rating) {
+                            setState(() {
+                              op.rating = rating;
+                            });
+                          },
+                          updateOnDrag: true,
                         )),
                   ),
                 ),
