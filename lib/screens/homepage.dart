@@ -4,7 +4,7 @@ import 'package:drink_beer/models/beersModel.dart';
 import 'package:drink_beer/objects/beer.dart';
 import 'package:provider/provider.dart';
 
-//This scree shows you a homepage with profile info and list of beers you've tasted
+//This screen shows you a homepage with profile info and list of beers you've tasted
 
 class Home extends StatefulWidget {
   @override
